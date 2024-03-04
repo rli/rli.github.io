@@ -53,13 +53,23 @@ nav {
 
 header {
     height: 100vh;
-    background: 
+    background:
         linear-gradient(
             rgba(37, 37, 37, 0.6),
             rgba(37, 37, 37, 0.6)
         ),
-        // url(res/img/overlay.png),
-        url(/res/img/seattle-lq.jpg)
+        url("/res/img/seattle-lq.jpg"),
+        no-repeat center center fixed;
+
+    background:
+        linear-gradient(
+            rgba(37, 37, 37, 0.6),
+            rgba(37, 37, 37, 0.6)
+        ),
+        image-set(
+            url("/res/img/seattle-lq.avif") type("image/avif"),
+            url("/res/img/seattle-lq.jpg") type("image/jpeg"),
+        ),
         no-repeat center center fixed;
 
     background-size: cover;
