@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Richard Li</title>
+    <meta name="author" content="Richard Li">
+    <meta name="description" content="Richard Li is a Senior Software Development Engineer at General Motors.">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#252525">
+    <link rel="canonical" href="https://richardli.me/">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Richard Li">
+    <meta property="og:description" content="Senior Software Development Engineer at General Motors.">
+    <meta property="og:url" content="https://richardli.me/">
+    <meta property="og:image" content="https://richardli.me/res/img/seattle-lq.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #ffd200;
+            --accent: #005daa;
+            --bg: #252525;
+            color-scheme: dark;
+        }
+
+        html {
+            font: 16px/1.5 "Open Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            color: white;
+            text-shadow: 0 1px black;
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgb(37 37 37 / 0.6), rgb(37 37 37 / 0.6)),
+                url("/res/img/seattle-lq.jpg");
+            background-image:
+                linear-gradient(rgb(37 37 37 / 0.6), rgb(37 37 37 / 0.6)),
+                image-set(
+                    url("/res/img/seattle-lq.avif") type("image/avif"),
+                    url("/res/img/seattle-lq.jpg") type("image/jpeg")
+                );
+            background-position: left center;
+            background-size: cover;
+        }
+
+        main {
+            align-self: center;
+            justify-self: center;
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /*
+         * Shrink-to-fit text. .fit-ref is a hidden copy of the longest
+         * unbreakable run, drawn at 1/4 size. .fit-box fills the space left
+         * beside it, so (container width) / (container width - box width)
+         * is how many times the ref fits; .fit-text scales by that, capped
+         * at the element's normal size.
+         */
+        @property --fit-length {
+            syntax: "<length>";
+            inherits: true;
+            initial-value: 0px;
+        }
+
+        .fit {
+            display: flex;
+            container-type: inline-size;
+        }
+
+        .fit-ref {
+            flex: none;
+            font-size: 0.25em;
+            white-space: nowrap;
+            visibility: hidden;
+        }
+
+        .fit-box {
+            flex: 1 1 0;
+            container-type: inline-size;
+            --fit-length: 100cqi;
+            --fit-available: var(--fit-length);
+        }
+
+        .fit-text {
+            display: block;
+            inline-size: var(--fit-available);
+            --fit-length: 100cqi;
+            font-size: min(1em, 0.25em * tan(atan2(var(--fit-available), var(--fit-available) - var(--fit-length))));
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 4em;
+            font-weight: 300;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        h1 .hey {
+            display: block;
+            font-size: 0.75em;
+            line-height: 1;
+            letter-spacing: 0.04em;
+        }
+
+        main p {
+            margin: 0;
+            font-size: 1.333em;
+        }
+
+        main p em {
+            font-style: normal;
+            font-weight: 300;
+            color: white;
+            background: var(--accent);
+            padding: 0 0.25em;
+            border-radius: 0.2em;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        main ul {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 0.4rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        main ul a {
+            display: block;
+            min-width: 4rem;
+            padding: 0 1rem;
+            line-height: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            /* labels shrink slightly on narrow screens; height stays 3rem */
+            font-size: clamp(0.7rem, 3.2vw, 0.8rem);
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            border-radius: 0.25rem;
+            transition: background-color 0.125s ease-in-out;
+        }
+
+        main ul a:hover {
+            background-color: rgb(255 255 255 / 0.1);
+        }
+
+        main ul a:active {
+            background-color: rgb(255 255 255 / 0.2);
+        }
+
+        footer {
+            padding: 0.3rem 1.25rem;
+            font-size: 0.95em;
+            background: linear-gradient(transparent, black);
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #aaa;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        @media (max-height: 400px) {
+            body {
+                font-size: 3vh;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            main ul a {
+                transition: none;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Richard Li",
+            "jobTitle": "Senior Software Development Engineer",
+            "url": "https://richardli.me",
+            "sameAs": ["https://github.com/rli", "https://linkedin.com/in/richardsli"],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "General Motors",
+                "url": "https://www.gm.com"
+            },
+            "alumniOf": [
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "University of California, Irvine",
+                    "url": "https://uci.edu"
+                },
+                {
+                    "@type": "Organization",
+                    "name": "Amazon Web Services",
+                    "url": "https://aws.amazon.com"
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <main>
+        <h1 class="fit">
+            <span class="fit-box"><span class="fit-text"><span class="hey">Hey, I'm</span> Richard Li</span></span>
+            <span class="fit-ref" aria-hidden="true">Richard Li</span>
+        </h1>
+        <p class="fit">
+            <span class="fit-box"><span class="fit-text">I am a <em>Senior Software Development Engineer</em> at <em>General Motors</em>.</span></span>
+            <span class="fit-ref" aria-hidden="true"><em>Senior Software Development Engineer</em></span>
+        </p>
+        <ul>
+            <li><a href="https://github.com/rli">github</a></li>
+            <li><a href="https://linkedin.com/in/richardsli">linkedin</a></li>
+        </ul>
+    </main>
+
+    <footer>
+        <a href='m&#97;ilto&#58;&#37;6D%65%&#52;&#48;%7&#50;&#105;%63hardl&#37;69&#37;2Eme'>me&#64;&#114;i&#99;h&#97;&#114;dli&#46;m&#101;</a>
+    </footer>
+</body>
+</html>
